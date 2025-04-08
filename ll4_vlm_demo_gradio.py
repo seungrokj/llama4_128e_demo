@@ -65,7 +65,7 @@ def predict(message, history):
             "content": assistant
         })
 
-    if image_url is None: 
+    if image_url == "": 
         stream = client.chat.completions.create(
             messages=[{
                 "role": "user",
@@ -76,7 +76,6 @@ def predict(message, history):
             stream=True
         )
     else:
-        print("OMG")
         base64_image = encode_image(image_url)
         stream = client.chat.completions.create(
             messages=[{ 
